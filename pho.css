@@ -1,0 +1,51 @@
+h1 {
+  color: green;
+}
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  border: 0;
+  padding: 0;
+  font-size: 30px;
+  font-family: "Lobster";
+  margin-left: 30px;
+}
+h1 {
+  font-family: "windsong";
+}
+h2 {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+p {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  font-weight: lighter;
+  text-indent: 25px;
+}
+.nav_bar {
+
+}
+.food {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.cart{
+  margin-left: 700px;
+}
