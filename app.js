@@ -5,8 +5,7 @@ const menu = [
         category: "breakfast",
         price: 6.00,
         img: "pic/cherry.jpg",
-        desc: "low carbs",
-        button: "add Cart"
+        desc: "low carbs"
     },
     {
         id: 2,
@@ -150,34 +149,43 @@ const menu = [
 
 const sectionCenter = document.querySelector(".section-center");
 const filterBtns = [document.querySelector(".filter-btn")];
-
 //loads items.
 
 window.addEventListener("DOMContentLoaded", function () {
      displayMenuItems(menu);
      displayMenuButtons();
-     addCart();
 });
 
     //filter items
 
 function displayMenuItems(menuItems) {
     let displayMenu = menuItems.map(function (item){
+        const { img, title, price, desc, id} = item;
     //console.log(item);
+    let search = menu;
 
     return `<article class="menu-item">
-            <img src=${item.img} alt=${item.title} class="photo" />
+            <img src=${img} alt=${title} class="photo" />
             <div class="item-info">
                 <header>
-                    <h4>${item.title}</h4>
-                    <h4 class="price">$${item.price}</h4>
+                    <h4>${title}</h4>
+                    <h4 class="price">$${price}</h4>
                 </header>
                 <p class="item-text">
-                    ${item.desc}
+                    ${desc}
+                    
                 </p>
-                <button type="button" class="addButton">${item.button}</button>
+                <div class="buttons">
+                <i onclick="decrement(${id})" class="bi bi-dash-square-fill"></i>
+                    <div id=${id} class="quantity">
+
+                            ${search.item === undefined ? 0 : search.item}
+                    </div>  
+               <i onclick="increment(${id})" class="bi bi-plus-square-fill"></i>
+                </div>
+                <button type="button" onclick="addToCart(${id})">add Cart</button>
             </div> 
-            
+
             </article>`;
     });
 
@@ -186,6 +194,33 @@ function displayMenuItems(menuItems) {
 
     sectionCenter.innerHTML = displayMenu;
 
+}
+
+function increment(id) {
+     const quantity = document.getElementById(id);
+     const text = quantity.textContent
+     let number = Math.abs(text.trim());
+    quantity.textContent = number+1
+
+
+    console.log(number)
+    console.log(number)
+    
+}
+
+function decrement(id) {
+    const quantity = document.getElementById(id);
+    const text = quantity.textContent
+    let number = Math.abs(text.trim());
+    if(number === 0){
+        return;
+    }
+    quantity.textContent = number-1;
+    console.log(id);
+}
+function addToCart() {
+    
+    console.log("add to cart")
 }
 
 function displayMenuButtons() {
